@@ -6,15 +6,18 @@ const Home = (): JSX.Element => {
   const [time, setTime] = useState(new Date());
 
   useEffect(() => {
+
+    /*  Assigns current time to state variable 'time' after every second of time */
     const timerId = setInterval(() => {
       setTime(new Date());
     }, 1000);
 
+    /* Clearing the interval on unmount */
     return () => {
       clearInterval(timerId);
     };
   }, []);
-  console.log("Rendered")
+
   return (
     <div className={styles.clocks}>
       <AnalogClock time={time} />
